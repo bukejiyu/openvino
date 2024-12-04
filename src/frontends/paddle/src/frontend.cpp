@@ -298,6 +298,7 @@ std::map<int32_t, std::shared_ptr<ov::Model>> FrontEnd::convert_each_node_recurs
                 for (const auto& port : out_ports) {
                     // TODO: figure a way to safely handle unused outputs
                     if (named_outputs.count(port.parameter())) {
+                        std::cout<<"here"<<std::endl;
                         const auto& ng_outputs = named_outputs.at(port.parameter());
                         FRONT_END_OP_CONVERSION_CHECK(ng_outputs.size() == (size_t)port.arguments_size(),
                                                       "The number of output tensors must be equal to "
@@ -319,9 +320,11 @@ std::map<int32_t, std::shared_ptr<ov::Model>> FrontEnd::convert_each_node_recurs
         const auto& outp_place = std::dynamic_pointer_cast<TensorPlace>(_outp_place);
         auto var = outp_place->get_desc();
         auto input_var_name = var.name();
+        std::cout<<"111 here"<<std::endl;
         auto result = std::make_shared<Result>(nodes_dict.at(input_var_name));
         result->set_friendly_name(input_var_name + "/Result");
         result_nodes.push_back(result);
+        std::cout<<"2222 here"<<std::endl;
         output_nodes.push_back(nodes_dict.at(input_var_name));
     }
 
