@@ -669,7 +669,17 @@ static const std::vector<std::string> models{
     // std::string("yolo_box_clip_box/yolo_box_clip_box.pdmodel"),
     // std::string("yolo_box_default/yolo_box_default.pdmodel"),
     // std::string("yolo_box_scale_xy/yolo_box_scale_xy.pdmodel"),
-    std::string("yolo_box_uneven_wh/yolo_box_uneven_wh.pdmodel")};
+    std::string("yolo_box_uneven_wh/yolo_box_uneven_wh.pdmodel"),
+    std::string("abs_float32/abs_float32.pdmodel"),
+    std::string("atan2/atan2.pdmodel"),
+    std::string("reduce_any_test_0/reduce_any_test_0.pdmodel"),
+    std::string("reduce_any_test_1/reduce_any_test_1.pdmodel"),
+    std::string("reduce_any_test_2/reduce_any_test_2.pdmodel"),
+    std::string("reduce_any_test_3/reduce_any_test_3.pdmodel"),
+    std::string("reduce_any_test_4/reduce_any_test_4.pdmodel"),
+    std::string("scatter_test_1/scatter_test_1.pdmodel"),
+    std::string("scatter_test_2/scatter_test_2.pdmodel"),
+    std::string("scatter_nd_add_test_1/scatter_nd_add_test_1.pdmodel")};
 
 INSTANTIATE_TEST_SUITE_P(PaddleFuzzyOpTest,
                          FrontEndFuzzyOpTest,
