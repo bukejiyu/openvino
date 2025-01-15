@@ -25,11 +25,15 @@ NamedOutputs fill_any_like(const NodeContext& node) {
             return dtype == type;
         });
     PADDLE_OP_CHECK(node, valid_type, "Invalid dtype! Fill_any_like supports boolean, i16, i32, i64, f16, f32, f64");
-    const auto value_node = default_opset::Constant::create(dtype, {1}, {value});
-    x = get_1d_tensor(x);
-    const auto shape_node = std::make_shared<default_opset::ShapeOf>(x);
-    return node.default_single_output_mapping({std::make_shared<default_opset::Broadcast>(value_node, shape_node)},
-                                              {"Out"});
+    if (x.get_partial_shape().rank().get_length() != 0) {
+        const auto value_node = default_opset::Constant::create(dtype, {1}, {value});
+        const auto shape_node = std::make_shared<default_opset::ShapeOf>(x);
+        return node.default_single_output_mapping({std::make_shared<default_opset::Broadcast>(value_node, shape_node)},
+                                                  {"Out"});
+    } else {
+        const auto value_node = default_opset::Constant::create(dtype, {}, {value});
+        return node.default_single_output_mapping({value_node}, {"Out"});
+    }
 }
 
 }  // namespace op

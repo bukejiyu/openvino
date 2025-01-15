@@ -35,6 +35,8 @@ OP_CONVERTER(elementwise_max);
 OP_CONVERTER(elementwise_min);
 OP_CONVERTER(elementwise_mod);
 OP_CONVERTER(elementwise_mul);
+OP_CONVERTER(mul);
+OP_CONVERTER(data_norm);
 OP_CONVERTER(elementwise_pow);
 OP_CONVERTER(elementwise_sub);
 OP_CONVERTER(equal);
@@ -181,6 +183,8 @@ std::map<std::string, CreatorFunction> get_supported_ops() {
             {"elementwise_floordiv", op::elementwise_floordiv},
             {"elementwise_mod", op::elementwise_mod},
             {"elementwise_mul", op::elementwise_mul},
+            {"mul", op::mul},
+            {"data_norm", op::data_norm},
             {"elementwise_max", op::elementwise_max},
             {"elementwise_min", op::elementwise_min},
             {"elementwise_sub", op::elementwise_sub},

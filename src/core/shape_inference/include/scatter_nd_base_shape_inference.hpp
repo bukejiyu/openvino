@@ -40,6 +40,10 @@ std::vector<TRShape> shape_infer(const util::ScatterNDBase* op, const std::vecto
                 // Used last_idx_pos because is equal rank of indices - 1
                 const auto expected_updates_rank = inputs_shape.size() + last_idx_pos - last_idx_dim_size;
                 // If expected updates rank is 0D it also can be a tensor with one element
+                std::cout << "updates_shape: " << updates_shape.size() << "\n";
+                std::cout << "expected_updates_rank: " << expected_updates_rank << "\n";
+                std::cout << "last_idx_pos: " << last_idx_pos << "\n";
+                std::cout << "last_idx_dim_size: " << last_idx_dim_size << "\n";
                 NODE_VALIDATION_CHECK(
                     op,
                     updates_shape.size() == expected_updates_rank || expected_updates_rank == 0,

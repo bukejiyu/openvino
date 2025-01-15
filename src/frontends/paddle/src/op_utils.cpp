@@ -14,7 +14,7 @@ namespace paddle {
 Output<Node> get_tensor_list(const OutputVector& node) {
     auto tensor_list = node;
     for (size_t i = 0; i < node.size(); i++) {
-        if (node[i].get_shape().size() == 0) {
+        if (node[i].get_partial_shape().rank().get_length() == 0) {
             tensor_list[i] = std::make_shared<op::default_opset::Unsqueeze>(
                 node[i],
                 op::default_opset::Constant::create(element::i64, {1}, {0}));

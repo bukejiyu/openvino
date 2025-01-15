@@ -22,6 +22,9 @@ NamedOutputs elementwise_sub(const NodeContext& node_context) {
 
 NamedOutputs elementwise_mul(const NodeContext& node_context) {
     auto x = node_context.get_input("X");
+    auto y = node_context.get_input("Y");
+    std::cout << "[elementwise_mul] x:" << static_cast<int>(x.get_partial_shape().size())<<"\n";
+    std::cout << "[elementwise_mul] y:" << static_cast<int>(y.get_partial_shape().size())<<"\n";
     if (x.get_element_type() == ov::element::boolean)
         return elementwise_ops<default_opset::LogicalAnd>(node_context);
     else
